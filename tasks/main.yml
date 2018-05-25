@@ -1,0 +1,36 @@
+---
+
+
+- name: check rclone exists
+  stat:
+    path: "/usr/local/bin/rclone"
+  register: check_rclone_exists
+
+- block:
+
+  - name: Install wget
+    package: name=wget state=present update_cache=yes
+
+  - name: Download rclone
+    command: wget https://downloads.rclone.org/v{{ rclone_version }}/rclone-v{{ rclone_version }}-{{ rclone_os }}.zip -O /tmp/rclone-v{{ rclone_version }}-{{ rclone_os }}.zip
+
+  - name: unarchive rclone
+    unarchive:
+      # src: https://downloads.rclone.org/v{{ rclone_version }}/rclone-v{{ rclone_version }}-{{ rclone_os }}.zip
+      src: /tmp/rclone-v{{ rclone_version }}-{{ rclone_os }}.zip
+      dest: "/tmp/"
+      remote_src: yes
+
+  - name: Copy rclone
+    copy:
+      src: "/tmp/rclone-v{{ rclone_version }}-{{ rclone_os }}/rclone"
+      dest: "/usr/local/bin/rclone"
+      group: "root"
+      owner: "root"
+      mode: 0555
+      force: yes
+      remote_src: yes
+    become: yes
+  when: check_rclone_exists.stat.exists == false or rclone_update
+  tags:
+    - install

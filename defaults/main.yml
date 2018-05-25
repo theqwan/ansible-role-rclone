@@ -1,0 +1,15 @@
+---
+
+rclone_version: 1.41
+rclone_os: "linux-amd64"
+# freebsd-386, freebsd-amd64,
+# linux-386, linux-amd64, linux-arm
+# linux-arm64, linux-mips, linux-mipsle,
+# netbsd-386, netbsd-amd64, netbsd-arm,
+# openbsd-386, openbsd-amd64,
+# osx-386, osx-amd64,
+# plan9-386, plan9-amd64,
+# solaris-amd64,
+# windows-386, windows-amd64,
+
+rclone_update: false
