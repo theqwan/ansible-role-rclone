@@ -9,7 +9,10 @@
 - block:
 
   - name: Install wget
-    package: name=wget state=present update_cache=yes
+    package: name={{ item }} state=present update_cache=yes
+    with_items:
+      - wget
+      - unzip
 
   - name: Download rclone
     command: wget https://downloads.rclone.org/v{{ rclone_version }}/rclone-v{{ rclone_version }}-{{ rclone_os }}.zip -O /tmp/rclone-v{{ rclone_version }}-{{ rclone_os }}.zip
