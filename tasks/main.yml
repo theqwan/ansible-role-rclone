@@ -15,7 +15,7 @@
       - unzip
 
   - name: Download rclone
-    command: wget https://downloads.rclone.org/v{{ rclone_version }}/rclone-v{{ rclone_version }}-{{ rclone_os }}.zip -O /tmp/rclone-v{{ rclone_version }}-{{ rclone_os }}.zip
+    command: wget https://downloads.rclone.org/v{{ rclone_version }}/rclone-{{ rclone_version }}-{{ rclone_os }}.zip -O /tmp/rclone-v{{ rclone_version }}-{{ rclone_os }}.zip
 
   - name: unarchive rclone
     unarchive:
