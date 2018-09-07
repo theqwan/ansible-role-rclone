@@ -39,7 +39,7 @@ Example Playbook
   become: yes
 
   vars:
-    rclone_version: v1.41
+    rclone_version: 1.41
     rclone_os: "linux-amd64"
 
   roles:
